@@ -1,4 +1,5 @@
 import React, { useState, useContext } from 'react';
+import useLocalStorage from '../hooks/useLocalStorage';
 
 export const TodoContext = React.createContext();
 
@@ -58,8 +59,9 @@ export default function TodoProvider({ children }) {
     },
   ];
 
-  const [todos, setTodos] = useState(initialTodos);
-  const [idCounter, setIdCounter] = useState(initialTodos.length);
+  // const [todos, setTodos] = useState(initialTodos);
+  const [todos, setTodos] = useLocalStorage('todos', []);
+  const [idCounter, setIdCounter] = useState(0);
 
   function addTodo(newTodoText, newTodoOptions) {
     let currIdCounter = idCounter;

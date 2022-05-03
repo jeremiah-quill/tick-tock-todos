@@ -8,11 +8,13 @@ const TodoList = () => {
   return (
     <div className="max-w-full bg-red-400 text-neutral-800 pt-16">
       <TodoForm />
-      <ul>
-        {todos.map((todo) => (
-          <Todo key={todo.id} todo={todo} />
-        ))}
-      </ul>
+      {todos.length > 0 ? (
+        <ul>
+          {todos.map((todo) => (
+            <Todo key={todo.id} todo={todo} />
+          ))}
+        </ul>
+      ) : null}
     </div>
   );
 };
