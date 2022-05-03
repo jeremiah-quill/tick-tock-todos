@@ -14,6 +14,7 @@ export default function TodoProvider({ children }) {
       completed: false,
       dateAdded: null,
       dateCompleted: null,
+      isConfigOpen: false,
     },
     {
       id: 2,
@@ -23,6 +24,7 @@ export default function TodoProvider({ children }) {
       completed: false,
       dateAdded: null,
       dateCompleted: null,
+      isConfigOpen: false,
     },
     {
       id: 3,
@@ -32,6 +34,7 @@ export default function TodoProvider({ children }) {
       completed: true,
       dateAdded: null,
       dateCompleted: null,
+      isConfigOpen: false,
     },
     {
       id: 4,
@@ -41,6 +44,7 @@ export default function TodoProvider({ children }) {
       completed: false,
       dateAdded: null,
       dateCompleted: null,
+      isConfigOpen: false,
     },
     {
       id: 5,
@@ -50,6 +54,7 @@ export default function TodoProvider({ children }) {
       completed: false,
       dateAdded: null,
       dateCompleted: null,
+      isConfigOpen: false,
     },
   ];
 
@@ -71,7 +76,17 @@ export default function TodoProvider({ children }) {
     setTodos((currTodos) => currTodos.filter((todo) => (todo.id !== todoId ? todo : '')));
   }
 
+  function toggleConfigForm(todoId) {
+    setTodos((currTodos) =>
+      currTodos.map((todo) =>
+        todo.id !== todoId ? todo : { ...todo, isConfigOpen: !todo.isConfigOpen }
+      )
+    );
+  }
+
   return (
-    <TodoContext.Provider value={{ todos, addTodo, removeTodo }}>{children}</TodoContext.Provider>
+    <TodoContext.Provider value={{ todos, addTodo, removeTodo, toggleConfigForm }}>
+      {children}
+    </TodoContext.Provider>
   );
 }

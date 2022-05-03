@@ -8,6 +8,7 @@ const TodoForm = () => {
     completed: false,
     dateAdded: null,
     dateCompleted: null,
+    isConfigOpen: false,
   };
 
   const [inputValue, setInputValue] = useState('');
