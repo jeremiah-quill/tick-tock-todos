@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState, useContext } from 'react';
 
 export const TodoContext = React.createContext();
 
@@ -84,8 +84,14 @@ export default function TodoProvider({ children }) {
     );
   }
 
+  function updateTodoText(todoId, updatedTodoText) {
+    setTodos((currTodos) =>
+      currTodos.map((todo) => (todo.id !== todoId ? todo : { ...todo, text: updatedTodoText }))
+    );
+  }
+
   return (
-    <TodoContext.Provider value={{ todos, addTodo, removeTodo, toggleConfigForm }}>
+    <TodoContext.Provider value={{ todos, addTodo, removeTodo, toggleConfigForm, updateTodoText }}>
       {children}
     </TodoContext.Provider>
   );
