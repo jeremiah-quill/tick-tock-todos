@@ -8,17 +8,17 @@ const TodoForm = () => {
     completed: false,
     dateAdded: null,
     dateCompleted: null,
-    isConfigOpen: false,
   };
 
   const [inputValue, setInputValue] = useState('');
-  const [todoOptions, setTodoOptions] = useState(defaultTodoOptions);
+  // Todo: uncomment this and use it for setting options?
+  // const [todoOptions, setTodoOptions] = useState(defaultTodoOptions);
 
   const { addTodo } = useTodoContext();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    addTodo(inputValue, todoOptions);
+    addTodo(inputValue, defaultTodoOptions);
     setInputValue('');
   };
 

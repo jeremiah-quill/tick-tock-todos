@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { useTodoContext } from '../../contexts/TodoContext';
 
-const ConfigView = ({ text, id }) => {
+// Todo: add config options on the config bar, and include them on submit
+const ConfigView = ({ text, id, closeConfigView }) => {
   const [inputValue, setInputValue] = useState(text);
-
-  const { toggleConfigForm, updateTodoText } = useTodoContext();
+  const { updateTodoText } = useTodoContext();
 
   function handleChange(e) {
     setInputValue(e.target.value);
@@ -13,7 +13,7 @@ const ConfigView = ({ text, id }) => {
   function handleUpdate(e) {
     e.preventDefault();
     updateTodoText(id, inputValue);
-    toggleConfigForm(id);
+    closeConfigView(id);
   }
 
   return (
