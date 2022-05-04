@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useTodoContext } from '../../contexts/TodoContext';
 
 const TodoForm = () => {
@@ -29,6 +29,8 @@ const TodoForm = () => {
   const openTodoConfig = (e) => {
     console.log('clicked config');
   };
+
+  console.log('in todo form');
 
   return (
     <div className="flex">
