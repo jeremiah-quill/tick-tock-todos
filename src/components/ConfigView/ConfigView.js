@@ -4,7 +4,7 @@ import { useTodoContext } from '../../contexts/TodoContext';
 // Todo: add config options on the config bar, and include them on submit
 const ConfigView = ({ text, id, closeConfigView }) => {
   const [inputValue, setInputValue] = useState(text);
-  const { updateTodoText } = useTodoContext();
+  const { dispatchTodos } = useTodoContext();
 
   function handleChange(e) {
     setInputValue(e.target.value);
@@ -12,7 +12,8 @@ const ConfigView = ({ text, id, closeConfigView }) => {
 
   function handleUpdate(e) {
     e.preventDefault();
-    updateTodoText(id, inputValue);
+    // updateTodoText(id, inputValue);
+    dispatchTodos({ type: 'UPDATE_TODO_TEXT', id: id, text: inputValue });
     closeConfigView(id);
   }
 

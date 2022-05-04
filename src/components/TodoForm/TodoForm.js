@@ -14,11 +14,12 @@ const TodoForm = () => {
   // Todo: uncomment this and use it for setting options?
   // const [todoOptions, setTodoOptions] = useState(defaultTodoOptions);
 
-  const { addTodo } = useTodoContext();
+  const { dispatchTodos } = useTodoContext();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    addTodo(inputValue, defaultTodoOptions);
+    // addTodo(inputValue, defaultTodoOptions);
+    dispatchTodos({ type: 'ADD_TODO', text: inputValue, options: defaultTodoOptions });
     setInputValue('');
   };
 

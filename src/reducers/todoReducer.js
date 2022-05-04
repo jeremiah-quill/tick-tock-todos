@@ -7,9 +7,7 @@ export default function todoReducer(state, action) {
     case 'REMOVE_TODO':
       return state.filter((todo) => todo.id !== action.id);
     case 'UPDATE_TODO_TEXT':
-      return state.map((todo) =>
-        todo.id !== action.id ? todo : { ...todo, text: action.updatedTodoText }
-      );
+      return state.map((todo) => (todo.id !== action.id ? todo : { ...todo, text: action.text }));
     default:
       return state;
   }
