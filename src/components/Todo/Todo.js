@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, memo } from 'react';
 import ConfigView from '../ConfigView';
 import StaticTodoView from '../StaticTodoView';
 
@@ -12,6 +12,7 @@ const Todo = ({ todo }) => {
   function closeConfigView() {
     setIsConfigOpen(false);
   }
+  console.log('rendered todo');
 
   return (
     <div className="relative">
@@ -27,4 +28,4 @@ const Todo = ({ todo }) => {
   );
 };
 
-export default Todo;
+export default memo(Todo);

@@ -16,8 +16,19 @@ export const DispatchTodosContext = React.createContext();
 //   dateCompleted: null,
 //   isConfigOpen: false,
 // };
-export default function TodosProvider({ children }) {
-  const [todos, dispatchTodos] = useReducer(todosReducer, []);
+export function TodosProvider({ children }) {
+  const [todos, dispatchTodos] = useReducer(todosReducer, [
+    {
+      importance: 1,
+      category: 'link',
+      text: 'placeholder todo',
+      completed: false,
+      dateAdded: null,
+      dateCompleted: null,
+      isConfigOpen: false,
+      id: 1,
+    },
+  ]);
 
   return (
     <TodosContext.Provider value={todos}>

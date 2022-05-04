@@ -30,8 +30,6 @@ const TodoForm = () => {
     console.log('clicked config');
   };
 
-  console.log('in todo form');
-
   return (
     <div className="flex">
       <form className="flex grow" onSubmit={handleSubmit}>

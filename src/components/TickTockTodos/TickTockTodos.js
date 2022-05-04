@@ -1,15 +1,19 @@
 import React from 'react';
 import Navbar from '../Navbar';
 import TodoList from '../TodoList';
-import TodosProvider from '../../contexts/TodoContext';
+import TodoForm from '../TodoForm';
+import { TodosProvider } from '../../contexts/TodoContext';
 
 const TickTockTodos = () => {
   return (
     <>
-      <TodosProvider>
-        <Navbar />
-        <TodoList />
-      </TodosProvider>
+      <Navbar />
+      <main className="pt-16">
+        <TodosProvider>
+          <TodoForm />
+          <TodoList />
+        </TodosProvider>
+      </main>
     </>
   );
 };
