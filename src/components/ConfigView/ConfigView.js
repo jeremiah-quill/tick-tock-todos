@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
-import { useTodoContext } from '../../contexts/TodoContext';
+import React, { useState, useContext } from 'react';
+import { DispatchTodosContext } from '../../contexts/TodoContext';
 
 // Todo: add config options on the config bar, and include them on submit
 const ConfigView = ({ text, id, closeConfigView }) => {
   const [inputValue, setInputValue] = useState(text);
-  const { dispatchTodos } = useTodoContext();
+  const { dispatchTodos } = useContext(DispatchTodosContext);
 
   function handleChange(e) {
     setInputValue(e.target.value);

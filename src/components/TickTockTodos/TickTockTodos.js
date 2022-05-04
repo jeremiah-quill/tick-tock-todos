@@ -1,15 +1,15 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Navbar from '../Navbar';
 import TodoList from '../TodoList';
-import TodoProvider from '../../contexts/TodoContext';
+import TodosProvider from '../../contexts/TodoContext';
 
 const TickTockTodos = () => {
   return (
     <>
-      <TodoProvider>
+      <TodosProvider>
         <Navbar />
         <TodoList />
-      </TodoProvider>
+      </TodosProvider>
     </>
   );
 };

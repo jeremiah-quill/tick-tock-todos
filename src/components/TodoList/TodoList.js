@@ -1,10 +1,10 @@
-import React from 'react';
-import { useTodoContext } from '../../contexts/TodoContext';
+import React, { useContext } from 'react';
+import { TodosContext } from '../../contexts/TodoContext';
 import Todo from '../Todo';
 import TodoForm from '../TodoForm';
 
 const TodoList = () => {
-  const { todos } = useTodoContext();
+  const { todos } = useContext(TodosContext);
 
   return (
     <div className="max-w-full bg-red-400 text-neutral-800 pt-16">

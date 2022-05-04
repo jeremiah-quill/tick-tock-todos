@@ -1,9 +1,10 @@
 import React, { useContext, useReducer } from 'react';
 import useLocalStorage from '../hooks/useLocalStorage';
-import todoReducer from '../reducers/todoReducer';
+import todosReducer from '../reducers/todosReducer';
 
-export const TodoContext = React.createContext();
-export const useTodoContext = () => useContext(TodoContext);
+export const TodosContext = React.createContext();
+export const DispatchTodosContext = React.createContext();
+// export const useTodoContext = () => useContext(TodoContext);
 
 // * this is the structure of a todo:
 // const todo = {
@@ -15,8 +16,14 @@ export const useTodoContext = () => useContext(TodoContext);
 //   dateCompleted: null,
 //   isConfigOpen: false,
 // };
-export default function TodoProvider({ children }) {
-  const [todos, dispatchTodos] = useReducer(todoReducer, []);
+export default function TodosProvider({ children }) {
+  const [todos, dispatchTodos] = useReducer(todosReducer, []);
 
-  return <TodoContext.Provider value={{ todos, dispatchTodos }}>{children}</TodoContext.Provider>;
+  return (
+    <TodosContext.Provider value={{ todos }}>
+      <DispatchTodosContext.Provider value={{ dispatchTodos }}>
+        {children}
+      </DispatchTodosContext.Provider>
+    </TodosContext.Provider>
+  );
 }

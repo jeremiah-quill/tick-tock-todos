@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { useTodoContext } from '../../contexts/TodoContext';
+import React, { useState, useContext } from 'react';
+import { DispatchTodosContext } from '../../contexts/TodoContext';
 
 const TodoForm = () => {
   const defaultTodoOptions = {
@@ -14,7 +14,7 @@ const TodoForm = () => {
   // Todo: uncomment this and use it for setting options?
   // const [todoOptions, setTodoOptions] = useState(defaultTodoOptions);
 
-  const { dispatchTodos } = useTodoContext();
+  const { dispatchTodos } = useContext(DispatchTodosContext);
 
   const handleSubmit = (e) => {
     e.preventDefault();

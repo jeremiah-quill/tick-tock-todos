@@ -1,6 +1,6 @@
 import uuid from 'react-uuid';
 
-export default function todoReducer(state, action) {
+export default function todosReducer(state, action) {
   switch (action.type) {
     case 'ADD_TODO':
       return [...state, { text: action.text, id: uuid(), ...action.options }];
