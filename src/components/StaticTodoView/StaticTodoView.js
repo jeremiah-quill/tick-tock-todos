@@ -5,7 +5,6 @@ const StaticTodoView = ({ text, id, openConfigView }) => {
   const { dispatchTodos } = useTodoContext();
 
   function handleDelete() {
-    // removeTodo(id);
     dispatchTodos({ type: 'REMOVE_TODO', id: id });
   }
 

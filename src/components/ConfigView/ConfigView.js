@@ -12,7 +12,6 @@ const ConfigView = ({ text, id, closeConfigView }) => {
 
   function handleUpdate(e) {
     e.preventDefault();
-    // updateTodoText(id, inputValue);
     dispatchTodos({ type: 'UPDATE_TODO_TEXT', id: id, text: inputValue });
     closeConfigView(id);
   }

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useTodoContext } from '../../contexts/TodoContext';
 
 const TodoForm = () => {
@@ -18,7 +18,6 @@ const TodoForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // addTodo(inputValue, defaultTodoOptions);
     dispatchTodos({ type: 'ADD_TODO', text: inputValue, options: defaultTodoOptions });
     setInputValue('');
   };
