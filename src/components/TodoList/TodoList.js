@@ -4,7 +4,7 @@ import Todo from '../Todo';
 import TodoForm from '../TodoForm';
 
 const TodoList = () => {
-  const { todos } = useContext(TodosContext);
+  const todos = useContext(TodosContext);
 
   return (
     <div className="max-w-full bg-red-400 text-neutral-800 pt-16">

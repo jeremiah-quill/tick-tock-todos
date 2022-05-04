@@ -14,7 +14,7 @@ const TodoForm = () => {
   // Todo: uncomment this and use it for setting options?
   // const [todoOptions, setTodoOptions] = useState(defaultTodoOptions);
 
-  const { dispatchTodos } = useContext(DispatchTodosContext);
+  const dispatchTodos = useContext(DispatchTodosContext);
 
   const handleSubmit = (e) => {
     e.preventDefault();

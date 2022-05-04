@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { DispatchTodosContext } from '../../contexts/TodoContext';
 
 const StaticTodoView = ({ text, id, openConfigView }) => {
-  const { dispatchTodos } = useContext(DispatchTodosContext);
+  const dispatchTodos = useContext(DispatchTodosContext);
 
   function handleDelete() {
     dispatchTodos({ type: 'REMOVE_TODO', id: id });

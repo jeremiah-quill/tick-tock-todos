@@ -20,8 +20,8 @@ export default function TodosProvider({ children }) {
   const [todos, dispatchTodos] = useReducer(todosReducer, []);
 
   return (
-    <TodosContext.Provider value={{ todos }}>
-      <DispatchTodosContext.Provider value={{ dispatchTodos }}>
+    <TodosContext.Provider value={todos}>
+      <DispatchTodosContext.Provider value={dispatchTodos}>
         {children}
       </DispatchTodosContext.Provider>
     </TodosContext.Provider>
