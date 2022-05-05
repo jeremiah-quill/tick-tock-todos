@@ -3,17 +3,20 @@ import Navbar from '../Navbar';
 import TodoList from '../TodoList';
 import TodoForm from '../TodoForm';
 import { TodosProvider } from '../../contexts/TodoContext';
+import { ModalProvider } from '../../contexts/ModalContext';
 
 const TickTockTodos = () => {
   return (
     <>
-      <Navbar />
-      <main className="pt-16">
-        <TodosProvider>
-          <TodoForm />
-          <TodoList />
-        </TodosProvider>
-      </main>
+      <ModalProvider>
+        <Navbar />
+        <main className="pt-16">
+          <TodosProvider>
+            <TodoForm />
+            <TodoList />
+          </TodosProvider>
+        </main>
+      </ModalProvider>
     </>
   );
 };
