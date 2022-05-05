@@ -1,10 +1,8 @@
-import React, { useContext, useReducer } from 'react';
+import React from 'react';
 import useLocalStorage from '../hooks/useLocalStorage';
-import todosReducer from '../reducers/todosReducer';
 
 export const TodosContext = React.createContext();
 export const DispatchTodosContext = React.createContext();
-// export const useTodoContext = () => useContext(TodoContext);
 
 // * this is the structure of a todo:
 // const todo = {
@@ -17,19 +15,10 @@ export const DispatchTodosContext = React.createContext();
 //   isConfigOpen: false,
 // };
 export function TodosProvider({ children }) {
-  const [todos, dispatchTodos] = useReducer(todosReducer, [
-    {
-      importance: 1,
-      category: 'link',
-      text: 'placeholder todo',
-      completed: false,
-      dateAdded: null,
-      dateCompleted: null,
-      isConfigOpen: false,
-      id: 1,
-    },
-  ]);
+  // * here we get the todos state and the dispatch to modify the state through our local storage hook, which uses useReducer on our todosReducer
+  const [todos, dispatchTodos] = useLocalStorage('todos', []);
 
+  // * returning todos and dispatch in separate contexts so we can consume only the context values that we need in each file
   return (
     <TodosContext.Provider value={todos}>
       <DispatchTodosContext.Provider value={dispatchTodos}>
