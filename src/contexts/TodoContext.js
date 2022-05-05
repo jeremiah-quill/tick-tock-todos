@@ -8,7 +8,8 @@ export const DispatchTodosContext = React.createContext();
 // const todo = {
 //   importance: 1,
 //   category: 'link',
-//   text: 'test todo 5',
+//   title: 'test todo 5',
+//   details: 'details',
 //   completed: false,
 //   dateAdded: null,
 //   dateCompleted: null,

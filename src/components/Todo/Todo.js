@@ -1,30 +1,23 @@
-import { useState, memo } from 'react';
-import ConfigView from '../ConfigView';
-import StaticTodoView from '../StaticTodoView';
+import { useContext, memo } from 'react';
+import { ModalContext } from '../../contexts/ModalContext';
 
 // TODO: make a checkbox input
 const Todo = ({ todo }) => {
-  const [isConfigOpen, setIsConfigOpen] = useState(false);
+  const { openModal } = useContext(ModalContext);
 
-  function openConfigView() {
-    setIsConfigOpen(true);
+  function handleOpenTodo() {
+    openModal({ type: 'VIEW_TODO', todo: todo });
   }
-
-  function closeConfigView() {
-    setIsConfigOpen(false);
-  }
-  console.log('rendered todo');
 
   return (
-    <div className="relative">
-      <li className="p-5 flex h-24" onClick={openConfigView}>
-        {isConfigOpen ? (
-          <ConfigView text={todo.text} id={todo.id} closeConfigView={closeConfigView} />
-        ) : (
-          <StaticTodoView text={todo.text} id={todo.id} openConfigView={openConfigView} />
-        )}
-      </li>
-    </div>
+    // <div className="relative">
+    <li onClick={handleOpenTodo} className="p-5 flex h-24">
+      <div className="text-left overflow-hidden">
+        <h1> {todo.title}</h1>
+        <p className="text-xs">{todo.details}</p>
+      </div>
+    </li>
+    // </div>
   );
 };
 

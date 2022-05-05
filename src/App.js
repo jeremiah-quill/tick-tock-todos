@@ -1,10 +1,16 @@
 import './App.css';
 import TickTockTodos from './components/TickTockTodos';
+import { ModalProvider } from './contexts/ModalContext';
+import { TodosProvider } from './contexts/TodoContext';
 
 function App() {
   return (
     <div className="App">
-      <TickTockTodos />
+      <ModalProvider>
+        <TodosProvider>
+          <TickTockTodos />
+        </TodosProvider>
+      </ModalProvider>
     </div>
   );
 }

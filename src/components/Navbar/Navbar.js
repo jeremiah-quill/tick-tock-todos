@@ -6,11 +6,11 @@ const Navbar = () => {
   const { openModal } = useContext(ModalContext);
 
   function handleOpenModal() {
-    openModal('NEW_NOTE');
+    openModal({ type: 'NEW_TODO' });
   }
 
   return (
-    <div className="h-16 flex items-center justify-between fixed top-0 inset-x-0 bg-black text-gray-100">
+    <div className="h-16 px-5 flex items-center justify-between fixed top-0 inset-x-0 bg-black text-gray-100">
       <button onClick={handleOpenModal}>add todo</button>
       <div>hamburger</div>
     </div>
