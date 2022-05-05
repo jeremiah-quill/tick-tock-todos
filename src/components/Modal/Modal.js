@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { ModalContext } from '../../contexts/ModalContext';
 
+// * Pass in a component that will be rendered as modal's children.  modal is an absolute div with left, top, right, and bottom all set to 0
 const Modal = ({ children }) => {
   const { closeModal } = useContext(ModalContext);
 
