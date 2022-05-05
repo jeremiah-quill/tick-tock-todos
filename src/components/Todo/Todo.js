@@ -2,6 +2,7 @@ import { useState, memo } from 'react';
 import ConfigView from '../ConfigView';
 import StaticTodoView from '../StaticTodoView';
 
+// TODO: make a checkbox input
 const Todo = ({ todo }) => {
   const [isConfigOpen, setIsConfigOpen] = useState(false);
 
@@ -16,8 +17,7 @@ const Todo = ({ todo }) => {
 
   return (
     <div className="relative">
-      <li className="p-5 flex">
-        <button>complete</button>
+      <li className="p-5 flex h-24" onClick={openConfigView}>
         {isConfigOpen ? (
           <ConfigView text={todo.text} id={todo.id} closeConfigView={closeConfigView} />
         ) : (

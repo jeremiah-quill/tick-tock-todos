@@ -12,11 +12,13 @@ const StaticTodoView = ({ text, id, openConfigView }) => {
 
   return (
     <>
-      <div className="mx-3">{text}</div>
+      <div className="mx-3 h-14 grow text-left px-2 border-2 align-top justify-start overflow-hidden">
+        <p>{text}</p>
+      </div>
       <div className="flex ml-auto gap-3">
-        <button onClick={openConfigView}>
+        {/* <button onClick={openConfigView}>
           <GrConfigure />
-        </button>
+        </button> */}
         <button onClick={handleDelete}>
           <FaTrash />
         </button>
