@@ -1,5 +1,7 @@
 import React, { useContext } from 'react';
 import { DispatchTodosContext } from '../../contexts/TodoContext';
+import { FaTrash } from 'react-icons/fa';
+import { GrConfigure } from 'react-icons/gr';
 
 const StaticTodoView = ({ text, id, openConfigView }) => {
   const dispatchTodos = useContext(DispatchTodosContext);
@@ -12,8 +14,12 @@ const StaticTodoView = ({ text, id, openConfigView }) => {
     <>
       <div className="mx-3">{text}</div>
       <div className="flex ml-auto gap-3">
-        <button onClick={openConfigView}>config</button>
-        <button onClick={handleDelete}>delete</button>
+        <button onClick={openConfigView}>
+          <GrConfigure />
+        </button>
+        <button onClick={handleDelete}>
+          <FaTrash />
+        </button>
       </div>
     </>
   );
