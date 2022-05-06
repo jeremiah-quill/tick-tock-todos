@@ -7,14 +7,9 @@ const NewTodo = () => {
   const [levelInputValue, setLevelInputValue] = useState(5);
   const [titleInputValue, setTitleInputValue] = useState('');
   const [detailsInputValue, setDetailsInputValue] = useState('');
+
   const { closeModal } = useContext(ModalContext);
   const dispatchTodos = useContext(DispatchTodosContext);
-
-  const defaultTodoOptions = {
-    completed: false,
-    dateAdded: null,
-    dateCompleted: null,
-  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -24,7 +19,9 @@ const NewTodo = () => {
         title: titleInputValue,
         details: detailsInputValue,
         importance: levelInputValue,
-        options: defaultTodoOptions,
+        completed: false,
+        dateAdded: new Date(),
+        dateCompleted: null,
       },
     });
     setTitleInputValue('');
@@ -41,12 +38,11 @@ const NewTodo = () => {
   };
 
   const handleLevelChange = (e) => {
-    console.log(e.target.value);
     setLevelInputValue(e.target.value);
   };
 
   return (
-    <div className="m-5 absolute inset-0">
+    <div className="bg-green-600 p-5">
       <form onSubmit={handleSubmit}>
         <input
           className="block w-full text-black p-2"
@@ -74,7 +70,7 @@ const NewTodo = () => {
             </select>
           </nav>
         </div>
-        <div className="my-3 border-t-2 pt-4">
+        <div className="mt-3 border-t-2 pt-4">
           <div className="flex mx-3">
             <button className="mr-3 border-2 p-1" type="submit">
               save

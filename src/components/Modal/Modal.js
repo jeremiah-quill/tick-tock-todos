@@ -7,8 +7,8 @@ const Modal = ({ children }) => {
 
   return (
     <>
-      <div onClick={closeModal} className="z-10 bg-black opacity-80 absolute inset-0" />
-      <div className="m-5 absolute inset-0 z-20 bg-slate-500">{children}</div>;
+      <div onClick={closeModal} className="fixed inset-0 z-10 bg-black opacity-80" />
+      <div className="fixed left-0 top-0 right-0 m-10 z-20 bg-slate-500">{children}</div>
     </>
   );
 };
