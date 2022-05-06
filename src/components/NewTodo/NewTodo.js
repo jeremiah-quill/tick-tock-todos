@@ -18,7 +18,7 @@ const NewTodo = () => {
       newTodo: {
         title: titleInputValue,
         details: detailsInputValue,
-        importance: parseFloat(levelInputValue),
+        importance: parseInt(levelInputValue),
         completed: false,
         dateAdded: new Date(),
         dateCompleted: null,
@@ -42,7 +42,7 @@ const NewTodo = () => {
   };
 
   return (
-    <div className="bg-green-600 p-5">
+    <div className="p-5">
       <form onSubmit={handleSubmit}>
         <input
           className="block w-full text-black p-2"

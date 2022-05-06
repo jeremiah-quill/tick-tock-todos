@@ -19,6 +19,8 @@ export function TodosProvider({ children }) {
   // * here we get the todos state and the dispatch to modify the state through our local storage hook, which uses useReducer on our todosReducer
   const [todos, dispatchTodos] = useLocalStorage('todos', []);
 
+  todos.sort((a, b) => a.importance - b.importance);
+
   // * returning todos and dispatch in separate contexts so we can consume only the context values that we need in each file
   return (
     <TodosContext.Provider value={todos}>

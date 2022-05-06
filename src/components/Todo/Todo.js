@@ -25,14 +25,18 @@ const Todo = ({ todo }) => {
         return 'bg-blue-200';
       case 5:
         return 'bg-white';
+      default:
+        return 'bg-purple-400';
     }
   }
 
   return (
-    <li onClick={handleOpenTodo} className="p-5 flex items-center h-24 cursor-pointer">
+    <li
+      onClick={handleOpenTodo}
+      className="p-5 hover:bg-gray-200 flex items-center h-24 cursor-pointer border-b-2 last-of-type:border-none border-black mx-5">
       <input
         type="checkbox"
-        className={`mr-3 rounded-full p-3 border-none ${mapImportanceToColor(todo.importance)}`}
+        className={`mr-3 rounded-full p-3 ${mapImportanceToColor(todo.importance)}`}
       />
       <div className="text-left overflow-hidden">
         <h1> {todo.title}</h1>
