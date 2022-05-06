@@ -1,6 +1,8 @@
 import React, { useContext, useState } from 'react';
 import { ModalContext } from '../../contexts/ModalContext';
 import { DispatchTodosContext } from '../../contexts/TodoContext';
+import { FaFlag } from 'react-icons/fa';
+// import LevelPicker from '../LevelPicker'
 
 const NewTodo = () => {
   const [titleInputValue, setTitleInputValue] = useState('');
@@ -49,17 +51,22 @@ const NewTodo = () => {
           className="block w-full text-black p-2"
           placeholder="Title"
           onChange={handleTitleChange}
+          required={true}
         />
         <input
           className="block w-full text-black p-2"
           placeholder="Description"
           onChange={handleDetailsChange}
+          required={false}
         />
         <div className="flex w-full">
-          <nav className="ml-auto" onClick={() => console.log('importance picker opened')}>
-            Importance
+          <nav className="ml-auto mt-5 mr-5">
+            <button type="button" onClick={() => console.log('opened importance picker')}>
+              <FaFlag />
+            </button>
           </nav>
         </div>
+        {/* <LevelPicker changeLevel={pickImportance} levels={levels}/> */}
         {/* <ul> */}
         {/* <li>Importance: 1</li> */}
         {/* <li>Importance: 2</li> */}
@@ -71,7 +78,7 @@ const NewTodo = () => {
             <button className="mr-3 border-2 p-1" type="submit">
               save
             </button>
-            <button className="border-2 p-1" onClick={closeModal}>
+            <button type="button" className="border-2 p-1" onClick={closeModal}>
               cancel
             </button>
           </div>
