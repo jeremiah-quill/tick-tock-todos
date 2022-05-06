@@ -1,9 +1,8 @@
-import React, { useContext, useEffect, useState, useCallback } from 'react';
+import React, { useContext, useEffect, useState, useMemo } from 'react';
 import { ModalContext } from '../../contexts/ModalContext';
 import { DispatchTodosContext } from '../../contexts/TodoContext';
 
 const ViewTodo = ({ todo }) => {
-  const [importanceColor, setImportanceColor] = useState(null);
   const [levelInputValue, setLevelInputValue] = useState(todo.importance);
 
   const { closeModal } = useContext(ModalContext);
@@ -13,28 +12,22 @@ const ViewTodo = ({ todo }) => {
     setLevelInputValue(e.target.value);
   };
 
-  // TODO: move to a helper functions file
-  function mapImportanceToColor(importance) {
-    switch (importance) {
+  const memoizedColor = useMemo(() => {
+    switch (parseInt(levelInputValue)) {
       case 1:
-        setImportanceColor('bg-red-500');
-        break;
+        return 'bg-red-500';
       case 2:
-        setImportanceColor('bg-orange-500');
-        break;
+        return 'bg-orange-500';
       case 3:
-        setImportanceColor('bg-yellow-500');
-        break;
+        return 'bg-yellow-500';
       case 4:
-        setImportanceColor('bg-blue-200');
-        break;
+        return 'bg-blue-200';
       case 5:
-        setImportanceColor('bg-red-500');
-        break;
+        return 'bg-white';
       default:
-        setImportanceColor('bg-purple-400');
+        return 'bg-purple-400';
     }
-  }
+  }, [levelInputValue]);
 
   useEffect(() => {
     dispatchTodos({
@@ -42,11 +35,10 @@ const ViewTodo = ({ todo }) => {
       importance: parseInt(levelInputValue),
       id: todo.id,
     });
-    mapImportanceToColor(parseInt(levelInputValue));
   }, [levelInputValue]);
 
   return (
-    <div className={`p-5 ${importanceColor}`}>
+    <div className={`p-5 ${memoizedColor}`}>
       <button onClick={closeModal} className="absolute top-5 right-5">
         close
       </button>
@@ -67,7 +59,6 @@ const ViewTodo = ({ todo }) => {
             <option value={1}>Importance: 1</option>
           </select>
         </nav>
-        {/* <button className="ml-auto">Importance</button> */}
       </div>
     </div>
   );
