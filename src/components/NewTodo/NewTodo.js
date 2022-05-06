@@ -2,24 +2,19 @@ import React, { useContext, useState } from 'react';
 import { ModalContext } from '../../contexts/ModalContext';
 import { DispatchTodosContext } from '../../contexts/TodoContext';
 import { FaFlag } from 'react-icons/fa';
-// import LevelPicker from '../LevelPicker'
 
 const NewTodo = () => {
+  const [levelInputValue, setLevelInputValue] = useState(5);
   const [titleInputValue, setTitleInputValue] = useState('');
   const [detailsInputValue, setDetailsInputValue] = useState('');
   const { closeModal } = useContext(ModalContext);
   const dispatchTodos = useContext(DispatchTodosContext);
 
   const defaultTodoOptions = {
-    importance: 1,
-    category: 'link',
     completed: false,
     dateAdded: null,
     dateCompleted: null,
   };
-
-  // Todo: uncomment this and use it for setting options?
-  // const [todoOptions, setTodoOptions] = useState(defaultTodoOptions);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -28,6 +23,7 @@ const NewTodo = () => {
       newTodo: {
         title: titleInputValue,
         details: detailsInputValue,
+        importance: levelInputValue,
         options: defaultTodoOptions,
       },
     });
@@ -42,6 +38,11 @@ const NewTodo = () => {
 
   const handleDetailsChange = (e) => {
     setDetailsInputValue(e.target.value);
+  };
+
+  const handleLevelChange = (e) => {
+    console.log(e.target.value);
+    setLevelInputValue(e.target.value);
   };
 
   return (
@@ -61,18 +62,18 @@ const NewTodo = () => {
         />
         <div className="flex w-full">
           <nav className="ml-auto mt-5 mr-5">
-            <button type="button" onClick={() => console.log('opened importance picker')}>
+            {/* <button type="button" onClick={() => console.log('opened importance picker')}>
               <FaFlag />
-            </button>
+            </button> */}
+            <select name="levels" id="levels" value={levelInputValue} onChange={handleLevelChange}>
+              <option value={5}>Importance: 5</option>
+              <option value={4}>Importance: 4</option>
+              <option value={3}>Importance: 3</option>
+              <option value={2}>Importance: 2</option>
+              <option value={1}>Importance: 1</option>
+            </select>
           </nav>
         </div>
-        {/* <LevelPicker changeLevel={pickImportance} levels={levels}/> */}
-        {/* <ul> */}
-        {/* <li>Importance: 1</li> */}
-        {/* <li>Importance: 2</li> */}
-        {/* <li>Importance: 3</li> */}
-        {/* <li>Importance: 4</li> */}
-        {/* </ul> */}
         <div className="my-3 border-t-2 pt-4">
           <div className="flex mx-3">
             <button className="mr-3 border-2 p-1" type="submit">
