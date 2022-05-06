@@ -18,7 +18,7 @@ const NewTodo = () => {
       newTodo: {
         title: titleInputValue,
         details: detailsInputValue,
-        importance: levelInputValue,
+        importance: parseFloat(levelInputValue),
         completed: false,
         dateAdded: new Date(),
         dateCompleted: null,

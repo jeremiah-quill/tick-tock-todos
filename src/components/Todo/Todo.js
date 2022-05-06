@@ -1,23 +1,44 @@
 import { useContext, memo } from 'react';
 import { ModalContext } from '../../contexts/ModalContext';
 
-// TODO: make a checkbox input
+// TODO: connect checkbox with state
+// TODO: order todos based on level of importance, remove items that have been completed?
 const Todo = ({ todo }) => {
   const { openModal } = useContext(ModalContext);
 
-  function handleOpenTodo() {
-    openModal({ type: 'VIEW_TODO', todo: todo });
+  function handleOpenTodo(e) {
+    if (e.target.getAttribute('type') !== 'checkbox') {
+      openModal({ type: 'VIEW_TODO', todo: todo });
+    }
+  }
+
+  // TODO: move to a helper functions file
+  function mapImportanceToColor(importance) {
+    switch (importance) {
+      case 1:
+        return 'bg-red-500';
+      case 2:
+        return 'bg-orange-500';
+      case 3:
+        return 'bg-yellow-500';
+      case 4:
+        return 'bg-blue-200';
+      case 5:
+        return 'bg-white';
+    }
   }
 
   return (
-    // <div className="relative">
-    <li onClick={handleOpenTodo} className="p-5 flex h-24 cursor-pointer">
+    <li onClick={handleOpenTodo} className="p-5 flex items-center h-24 cursor-pointer">
+      <input
+        type="checkbox"
+        className={`mr-3 rounded-full p-3 border-none ${mapImportanceToColor(todo.importance)}`}
+      />
       <div className="text-left overflow-hidden">
         <h1> {todo.title}</h1>
         <p className="text-xs">{todo.details}</p>
       </div>
     </li>
-    // </div>
   );
 };
 

@@ -1,8 +1,6 @@
 import React, { useContext } from 'react';
 import Navbar from '../Navbar';
 import TodoList from '../TodoList';
-import TodoForm from '../TodoForm';
-import { TodosProvider } from '../../contexts/TodoContext';
 import Modal from '../Modal';
 import { ModalContext } from '../../contexts/ModalContext';
 
