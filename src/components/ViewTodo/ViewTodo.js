@@ -1,15 +1,33 @@
 import React, { useContext, useEffect, useState, useMemo } from 'react';
 import { ModalContext } from '../../contexts/ModalContext';
 import { DispatchTodosContext } from '../../contexts/TodoContext';
+// AiOutlineCloseCircle
+import { AiOutlineCloseCircle } from 'react-icons/ai';
+import EditorView from '../EditorView';
 
+// TODO: separate into view vs. editor
 const ViewTodo = ({ todo }) => {
   const [levelInputValue, setLevelInputValue] = useState(todo.importance);
+  const [isEditorOpen, setIsEditorOpen] = useState(false);
 
   const { closeModal } = useContext(ModalContext);
   const dispatchTodos = useContext(DispatchTodosContext);
 
   const handleLevelChange = (e) => {
     setLevelInputValue(e.target.value);
+  };
+
+  const openEditor = () => {
+    setIsEditorOpen(true);
+  };
+
+  const closeEditor = () => {
+    console.log('what?');
+    setIsEditorOpen(false);
+  };
+
+  const handleSave = () => {
+    console.log('saved changes to todo title and details');
   };
 
   const memoizedColor = useMemo(() => {
@@ -38,27 +56,36 @@ const ViewTodo = ({ todo }) => {
   }, [levelInputValue]);
 
   return (
-    <div className={`p-5 ${memoizedColor}`}>
+    <div className={`p-5 absolute inset-0 ${memoizedColor}`}>
       <button onClick={closeModal} className="absolute top-5 right-5">
-        close
+        <AiOutlineCloseCircle size="2rem" />
       </button>
-      <div className="text-left mt-10">
-        <h1> {todo.title}</h1>
-        <p className="text-xs">{todo.details}</p>
-      </div>
-      <div className="flex w-full">
-        <nav className="ml-auto mt-5 mr-5">
-          {/* <button type="button" onClick={() => console.log('opened importance picker')}>
-              <FaFlag />
-            </button> */}
-          <select name="levels" id="levels" value={levelInputValue} onChange={handleLevelChange}>
-            <option value={5}>Importance: 5</option>
-            <option value={4}>Importance: 4</option>
-            <option value={3}>Importance: 3</option>
-            <option value={2}>Importance: 2</option>
-            <option value={1}>Importance: 1</option>
-          </select>
-        </nav>
+      <div className={`text-left p-3 mt-10`}>
+        {isEditorOpen ? (
+          <EditorView todo={todo} closeEditor={closeEditor} handleSave={handleSave} />
+        ) : (
+          <div className="p-3">
+            <div onClick={openEditor}>
+              <h1> {todo.title}</h1>
+              <p className="text-xs">{todo.details}</p>
+            </div>
+            <div className="flex w-full">
+              <nav className="ml-auto mt-5 mr-5">
+                <select
+                  name="levels"
+                  id="levels"
+                  value={levelInputValue}
+                  onChange={handleLevelChange}>
+                  <option value={5}>Importance: 5</option>
+                  <option value={4}>Importance: 4</option>
+                  <option value={3}>Importance: 3</option>
+                  <option value={2}>Importance: 2</option>
+                  <option value={1}>Importance: 1</option>
+                </select>
+              </nav>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );
