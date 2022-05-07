@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState, useMemo } from 'react';
 import { ModalContext } from '../../contexts/ModalContext';
-import { DispatchTodosContext } from '../../contexts/TodoContext';
+import { DispatchTodosContext, TodosContext } from '../../contexts/TodoContext';
 // AiOutlineCloseCircle
 import { AiOutlineCloseCircle } from 'react-icons/ai';
 import EditorView from '../EditorView';
@@ -22,12 +22,7 @@ const ViewTodo = ({ todo }) => {
   };
 
   const closeEditor = () => {
-    console.log('what?');
     setIsEditorOpen(false);
-  };
-
-  const handleSave = () => {
-    console.log('saved changes to todo title and details');
   };
 
   const memoizedColor = useMemo(() => {
@@ -62,7 +57,7 @@ const ViewTodo = ({ todo }) => {
       </button>
       <div className={`text-left p-3 mt-10`}>
         {isEditorOpen ? (
-          <EditorView todo={todo} closeEditor={closeEditor} handleSave={handleSave} />
+          <EditorView todo={todo} closeEditor={closeEditor} />
         ) : (
           <div className="p-3">
             <div onClick={openEditor}>

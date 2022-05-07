@@ -10,6 +10,12 @@ export default function todosReducer(state, action) {
       return state.map((todo) =>
         todo.id !== action.id ? todo : { ...todo, importance: action.importance }
       );
+    case 'UPDATE_TODO':
+      return state.map((todo) =>
+        todo.id !== action.id
+          ? todo
+          : { ...todo, title: action.updatedTitle, details: action.updatedDetails }
+      );
     case 'UPDATE_TODO_TEXT':
       return state.map((todo) => (todo.id !== action.id ? todo : { ...todo, text: action.text }));
     default:
