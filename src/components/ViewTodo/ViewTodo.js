@@ -48,7 +48,7 @@ const ViewTodo = ({ todo }) => {
       importance: parseInt(levelInputValue),
       id: todo.id,
     });
-  }, [levelInputValue]);
+  }, [levelInputValue, todo.importance]);
 
   return (
     <div className={`p-5 absolute inset-0 ${memoizedColor}`}>

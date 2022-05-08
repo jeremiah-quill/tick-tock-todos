@@ -1,10 +1,10 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { DispatchTodosContext } from '../../contexts/TodoContext';
 import { ModalContext } from '../../contexts/ModalContext';
 
 const EditorView = ({ closeEditor, todo }) => {
   // TODO: set this up
-  // const [levelInputValue, setLevelInputValue] = useState(todo.importance);
+  const [levelInputValue, setLevelInputValue] = useState(todo.importance);
   const [titleInputValue, setTitleInputValue] = useState(todo.title);
   const [detailsInputValue, setDetailsInputValue] = useState(todo.details);
 
@@ -20,9 +20,9 @@ const EditorView = ({ closeEditor, todo }) => {
   };
 
   // TODO: set this up
-  // const handleLevelChange = (e) => {
-  //   setLevelInputValue(e.target.value);
-  // };
+  const handleLevelChange = (e) => {
+    setLevelInputValue(e.target.value);
+  };
 
   const handleUpdateSubmit = (e) => {
     e.preventDefault();
@@ -34,6 +34,14 @@ const EditorView = ({ closeEditor, todo }) => {
     });
     closeEditor();
   };
+
+  useEffect(() => {
+    dispatchTodos({
+      type: 'UPDATE_IMPORTANCE',
+      importance: parseInt(levelInputValue),
+      id: todo.id,
+    });
+  }, [levelInputValue]);
 
   return (
     <div>
@@ -53,7 +61,7 @@ const EditorView = ({ closeEditor, todo }) => {
             required={false}
             value={detailsInputValue}
           />
-          {/* <div className="flex w-full">
+          <div className="flex w-full">
             <nav className="ml-auto mt-5 mr-5">
               <select
                 name="levels"
@@ -67,7 +75,7 @@ const EditorView = ({ closeEditor, todo }) => {
                 <option value={1}>Importance: 1</option>
               </select>
             </nav>
-          </div> */}
+          </div>
           {/* <div className="flex">
             <div className="ml-auto">flag</div>
           </div> */}

@@ -3,7 +3,7 @@ import { ModalContext } from '../../contexts/ModalContext';
 import { DispatchTodosContext } from '../../contexts/TodoContext';
 import { FaFlag } from 'react-icons/fa';
 
-const NewTodo = () => {
+const NewTodo = ({ close }) => {
   const [levelInputValue, setLevelInputValue] = useState(5);
   const [titleInputValue, setTitleInputValue] = useState('');
   const [detailsInputValue, setDetailsInputValue] = useState('');
@@ -26,7 +26,7 @@ const NewTodo = () => {
     });
     setTitleInputValue('');
     setDetailsInputValue('');
-    closeModal();
+    close();
   };
 
   const handleTitleChange = (e) => {
@@ -75,7 +75,7 @@ const NewTodo = () => {
             <button className="mr-3 border-2 p-1" type="submit">
               save
             </button>
-            <button type="button" className="border-2 p-1" onClick={closeModal}>
+            <button type="button" className="border-2 p-1" onClick={close}>
               cancel
             </button>
           </div>
