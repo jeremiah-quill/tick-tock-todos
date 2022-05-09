@@ -44,7 +44,7 @@ const EditorView = ({ closeEditor, todo, handleLevelChange, levelInputValue }) =
   return (
     <div>
       <form onSubmit={handleUpdateSubmit}>
-        <div className="border-2 border-black p-2 bg-white">
+        <div className="rounded p-2 bg-white">
           <input
             className="block w-full text-black"
             placeholder="Title"
@@ -53,7 +53,7 @@ const EditorView = ({ closeEditor, todo, handleLevelChange, levelInputValue }) =
             value={titleInputValue}
           />
           <input
-            className="block w-full text-black"
+            className="block w-full text-black text-xs"
             placeholder="Description"
             onChange={handleDetailsChange}
             required={false}
@@ -62,6 +62,7 @@ const EditorView = ({ closeEditor, todo, handleLevelChange, levelInputValue }) =
           <div className="flex w-full">
             <nav className="ml-auto mt-5 mr-5">
               <select
+                className="rounded"
                 name="levels2"
                 id="levels2"
                 value={levelInputValue}
@@ -78,11 +79,16 @@ const EditorView = ({ closeEditor, todo, handleLevelChange, levelInputValue }) =
             <div className="ml-auto">flag</div>
           </div> */}
         </div>
-        <div className="flex gap-3 mt-3">
-          <button className="px-2 py-1 border-2" type="submit">
+        <div className="flex mt-3">
+          <button
+            className="mr-3 py-1 px-3 rounded text-white bg-black hover:bg-gray-800"
+            type="submit">
             save
           </button>
-          <button className="px-2 py-1 border-2" typoe="button" onClick={closeEditor}>
+          <button
+            className="py-1 px-3 rounded text-white bg-black hover:bg-gray-800"
+            typoe="button"
+            onClick={closeEditor}>
             cancel
           </button>
         </div>

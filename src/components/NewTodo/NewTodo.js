@@ -57,7 +57,7 @@ const NewTodo = ({ close }) => {
   }, [levelInputValue]);
 
   return (
-    <div className={`p-5 ${memoizedColor}`}>
+    <div className={`p-5 rounded ${memoizedColor}`}>
       <form onSubmit={handleSubmit}>
         <input
           className="block w-full text-black p-2"
@@ -66,7 +66,7 @@ const NewTodo = ({ close }) => {
           required={true}
         />
         <input
-          className="block w-full text-black p-2"
+          className="block w-full text-black p-2 text-xs"
           placeholder="Description"
           onChange={handleDetailsChange}
           required={false}
@@ -76,7 +76,12 @@ const NewTodo = ({ close }) => {
             {/* <button type="button" onClick={() => console.log('opened importance picker')}>
               <FaFlag />
             </button> */}
-            <select name="levels" id="levels" value={levelInputValue} onChange={handleLevelChange}>
+            <select
+              className="rounded"
+              name="levels"
+              id="levels"
+              value={levelInputValue}
+              onChange={handleLevelChange}>
               <option value={5}>Importance: 5</option>
               <option value={4}>Importance: 4</option>
               <option value={3}>Importance: 3</option>
@@ -87,10 +92,15 @@ const NewTodo = ({ close }) => {
         </div>
         <div className="mt-3 border-t-2 pt-4">
           <div className="flex mx-3">
-            <button className="mr-3 border-2 p-1" type="submit">
+            <button
+              className="mr-3 py-1 px-3 rounded text-white bg-black hover:bg-gray-800"
+              type="submit">
               save
             </button>
-            <button type="button" className="border-2 p-1" onClick={close}>
+            <button
+              type="button"
+              className="py-1 px-3 rounded text-white bg-black hover:bg-gray-800"
+              onClick={close}>
               cancel
             </button>
           </div>

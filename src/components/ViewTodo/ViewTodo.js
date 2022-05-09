@@ -49,8 +49,8 @@ const ViewTodo = ({ todo, close }) => {
   }, [levelInputValue, todo.importance]);
 
   return (
-    <div className={`p-5 ${memoizedColor}`}>
-      <button onClick={close} className="absolute top-5 right-5">
+    <div className={`p-5 rounded ${memoizedColor}`}>
+      <button onClick={close} className="absolute top-5 right-5 hover:bg-orange-200 p-1 rounded">
         <GrClose />
       </button>
       <div className={`text-left p-3 mt-10`}>
@@ -70,6 +70,7 @@ const ViewTodo = ({ todo, close }) => {
             <div className="flex w-full">
               <nav className="ml-auto mt-5 mr-5">
                 <select
+                  className="rounded"
                   name="levels"
                   id="levels"
                   value={levelInputValue}

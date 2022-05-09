@@ -25,7 +25,7 @@ const Navbar = () => {
         </Modal>
       ) : null}
       <div className="h-16 px-5 flex items-center justify-between fixed top-0 inset-x-0 bg-black text-gray-100">
-        <button onClick={handleOpenModal}>
+        <button className="hover:bg-gray-800 rounded" onClick={handleOpenModal}>
           <AiOutlinePlus size="2em" />
         </button>
         <div>

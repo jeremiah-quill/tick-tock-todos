@@ -40,8 +40,11 @@ const Todo = ({ todo }) => {
       ) : null}
       <li
         onClick={handleOpenTodo}
-        className="p-5 hover:bg-gray-200 flex items-center h-24 cursor-pointer border-b last-of-type:border-none border-black">
-        <input type="checkbox" className={`mr-3 rounded-full p-3 ${memoizedColor}`} />
+        className="p-5 hover:bg-gray-200 rounded flex items-center h-24 cursor-pointer border-black border-2 mb-2">
+        <input
+          type="checkbox"
+          className={`mr-3 rounded-full p-2 border-2 border-black ${memoizedColor}`}
+        />
         <div className="text-left overflow-hidden">
           <h1> {todo.title}</h1>
           <p className="text-xs">{todo.details}</p>
