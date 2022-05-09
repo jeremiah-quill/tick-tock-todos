@@ -1,9 +1,8 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { DispatchTodosContext } from '../../contexts/TodoContext';
+import Button from '../Button';
 
 const EditorView = ({ closeEditor, todo, handleLevelChange, levelInputValue }) => {
-  // TODO: set this up
-  // const [levelInputValue, setLevelInputValue] = useState(todo.importance);
   const [titleInputValue, setTitleInputValue] = useState(todo.title);
   const [detailsInputValue, setDetailsInputValue] = useState(todo.details);
 
@@ -16,11 +15,6 @@ const EditorView = ({ closeEditor, todo, handleLevelChange, levelInputValue }) =
   const handleDetailsChange = (e) => {
     setDetailsInputValue(e.target.value);
   };
-
-  // // TODO: set this up
-  // const handleLevelChange = (e) => {
-  //   setLevelInputValue(e.target.value);
-  // };
 
   const handleUpdateSubmit = (e) => {
     e.preventDefault();
@@ -80,17 +74,8 @@ const EditorView = ({ closeEditor, todo, handleLevelChange, levelInputValue }) =
           </div> */}
         </div>
         <div className="flex mt-3">
-          <button
-            className="mr-3 py-1 px-3 rounded text-white bg-black hover:bg-gray-800"
-            type="submit">
-            save
-          </button>
-          <button
-            className="py-1 px-3 rounded text-white bg-black hover:bg-gray-800"
-            typoe="button"
-            onClick={closeEditor}>
-            cancel
-          </button>
+          <Button type="submit" text="save" style="black" />
+          <Button type="button" text="cancel" style="black" onClick={closeEditor} />
         </div>
       </form>
     </div>

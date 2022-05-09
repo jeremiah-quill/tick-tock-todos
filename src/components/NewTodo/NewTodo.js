@@ -60,13 +60,13 @@ const NewTodo = ({ close }) => {
     <div className={`p-5 rounded ${memoizedColor}`}>
       <form onSubmit={handleSubmit}>
         <input
-          className="block w-full text-black p-2"
+          className="block w-full text-black p-2 rounded-t"
           placeholder="Title"
           onChange={handleTitleChange}
           required={true}
         />
         <input
-          className="block w-full text-black p-2 text-xs"
+          className="block w-full text-black p-2 text-xs rounded-b"
           placeholder="Description"
           onChange={handleDetailsChange}
           required={false}
