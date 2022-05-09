@@ -1,6 +1,7 @@
 import React, { useContext, useMemo, useState } from 'react';
 import { DispatchTodosContext } from '../../contexts/TodoContext';
 import { FaFlag } from 'react-icons/fa';
+import Button from '../Button';
 
 const NewTodo = ({ close }) => {
   const [levelInputValue, setLevelInputValue] = useState(5);
@@ -92,7 +93,10 @@ const NewTodo = ({ close }) => {
         </div>
         <div className="mt-3 pt-4">
           <div className="flex mx-3">
-            <button
+            <Button type="submit" text="save" style="black" />
+            <Button type="button" text="cancel" style="black" onClick={close} />
+
+            {/* <button
               className="mr-3 py-1 px-3 rounded text-white bg-black hover:bg-gray-800"
               type="submit">
               save
@@ -102,7 +106,7 @@ const NewTodo = ({ close }) => {
               className="py-1 px-3 rounded text-white bg-black hover:bg-gray-800"
               onClick={close}>
               cancel
-            </button>
+            </button> */}
           </div>
         </div>
       </form>

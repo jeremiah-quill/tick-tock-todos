@@ -6,7 +6,7 @@ const Button = ({ text, style, onClick, type }) => {
       case 'black':
         return 'mr-3 py-1 px-3 rounded text-white bg-black hover:bg-gray-800';
       default:
-        return '';
+        return style;
     }
   }, [style]);
 

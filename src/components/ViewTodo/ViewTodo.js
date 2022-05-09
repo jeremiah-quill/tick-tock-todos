@@ -1,8 +1,10 @@
 import React, { useContext, useEffect, useState, useMemo } from 'react';
 import { DispatchTodosContext } from '../../contexts/TodoContext';
 // AiOutlineCloseCircle
+import { FaTrash } from 'react-icons/fa';
 import { GrClose } from 'react-icons/gr';
 import EditorView from '../EditorView';
+import Button from '../Button';
 
 // TODO: separate into view vs. editor
 const ViewTodo = ({ todo, close }) => {
@@ -21,6 +23,10 @@ const ViewTodo = ({ todo, close }) => {
 
   const closeEditor = () => {
     setIsEditorOpen(false);
+  };
+
+  const handleDelete = () => {
+    dispatchTodos({ type: 'REMOVE_TODO', id: todo.id });
   };
 
   const memoizedColor = useMemo(() => {
@@ -81,6 +87,12 @@ const ViewTodo = ({ todo, close }) => {
                   <option value={2}>Importance: 2</option>
                   <option value={1}>Importance: 1</option>
                 </select>
+                <Button
+                  type="button"
+                  onClick={handleDelete}
+                  style="hover:bg-yellow-200 p-1 rounded"
+                  text={<FaTrash />}
+                />
               </nav>
             </div>
           </div>
