@@ -2,6 +2,7 @@ import { memo, useMemo } from 'react';
 import ViewTodo from '../ViewTodo';
 import Modal from '../Modal';
 import { useModal } from '../../hooks/useModal';
+import { motion, AnimatePresence } from 'framer-motion';
 
 // TODO: connect checkbox with state
 // TODO: order todos based on level of importance, remove items that have been completed?
@@ -31,25 +32,42 @@ const Todo = ({ todo }) => {
     }
   }, [todo.importance]);
 
+  const listItem = {
+    initial: {
+      opacity: 0,
+      // x: '-20%',
+    },
+    animate: {
+      opacity: 1,
+      // x: '0%',
+      // transition: {
+      //   duration: 0.3,
+      // },
+    },
+  };
+
   return (
     <>
-      {isViewOpen ? (
-        <Modal open={openView} close={closeView}>
-          <ViewTodo todo={todo} close={closeView} />
-        </Modal>
-      ) : null}
-      <li
+      <AnimatePresence>
+        {isViewOpen ? (
+          <Modal open={openView} close={closeView}>
+            <ViewTodo todo={todo} close={closeView} isOpen={isViewOpen} />
+          </Modal>
+        ) : null}
+      </AnimatePresence>
+      <motion.li
+        variants={listItem}
         onClick={handleOpenTodo}
-        className="p-5 hover:bg-gray-200 rounded flex items-center h-24 cursor-pointer border-black border-2 mb-2">
+        className="p-5 hover:bg-gray-200 rounded flex items-center h-24 cursor-pointer">
         <input
           type="checkbox"
-          className={`mr-3 rounded-full p-2 border-2 border-black ${memoizedColor}`}
+          className={`mr-3 rounded p-2 border-2 border-black ${memoizedColor}`}
         />
         <div className="text-left overflow-hidden">
           <h1> {todo.title}</h1>
           <p className="text-xs">{todo.details}</p>
         </div>
-      </li>
+      </motion.li>
     </>
   );
 };

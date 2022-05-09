@@ -90,7 +90,7 @@ const NewTodo = ({ close }) => {
             </select>
           </nav>
         </div>
-        <div className="mt-3 border-t-2 pt-4">
+        <div className="mt-3 pt-4">
           <div className="flex mx-3">
             <button
               className="mr-3 py-1 px-3 rounded text-white bg-black hover:bg-gray-800"
