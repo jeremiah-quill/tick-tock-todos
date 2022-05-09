@@ -49,7 +49,7 @@ const ViewTodo = ({ todo, close }) => {
   }, [levelInputValue, todo.importance]);
 
   return (
-    <div className={`p-5 absolute inset-0 ${memoizedColor}`}>
+    <div className={`p-5 ${memoizedColor}`}>
       <button onClick={close} className="absolute top-5 right-5">
         <GrClose />
       </button>

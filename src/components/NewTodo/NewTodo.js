@@ -57,7 +57,7 @@ const NewTodo = ({ close }) => {
   }, [levelInputValue]);
 
   return (
-    <div className={`p-5 absolute inset-0 ${memoizedColor}`}>
+    <div className={`p-5 ${memoizedColor}`}>
       <form onSubmit={handleSubmit}>
         <input
           className="block w-full text-black p-2"
