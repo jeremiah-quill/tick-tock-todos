@@ -6,11 +6,10 @@ import { AiOutlineCloseCircle } from 'react-icons/ai';
 import EditorView from '../EditorView';
 
 // TODO: separate into view vs. editor
-const ViewTodo = ({ todo }) => {
+const ViewTodo = ({ todo, close }) => {
   const [levelInputValue, setLevelInputValue] = useState(todo.importance);
   const [isEditorOpen, setIsEditorOpen] = useState(false);
 
-  const { closeModal } = useContext(ModalContext);
   const dispatchTodos = useContext(DispatchTodosContext);
 
   const handleLevelChange = (e) => {
@@ -52,12 +51,17 @@ const ViewTodo = ({ todo }) => {
 
   return (
     <div className={`p-5 absolute inset-0 ${memoizedColor}`}>
-      <button onClick={closeModal} className="absolute top-5 right-5">
+      <button onClick={close} className="absolute top-5 right-5">
         <AiOutlineCloseCircle size="2rem" />
       </button>
       <div className={`text-left p-3 mt-10`}>
         {isEditorOpen ? (
-          <EditorView todo={todo} closeEditor={closeEditor} />
+          <EditorView
+            todo={todo}
+            closeEditor={closeEditor}
+            levelInputValue={levelInputValue}
+            handleLevelChange={handleLevelChange}
+          />
         ) : (
           <div className="p-3">
             <div onClick={openEditor}>

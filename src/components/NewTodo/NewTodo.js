@@ -1,5 +1,4 @@
-import React, { useContext, useState } from 'react';
-import { ModalContext } from '../../contexts/ModalContext';
+import React, { useContext, useMemo, useState } from 'react';
 import { DispatchTodosContext } from '../../contexts/TodoContext';
 import { FaFlag } from 'react-icons/fa';
 
@@ -8,7 +7,6 @@ const NewTodo = ({ close }) => {
   const [titleInputValue, setTitleInputValue] = useState('');
   const [detailsInputValue, setDetailsInputValue] = useState('');
 
-  const { closeModal } = useContext(ModalContext);
   const dispatchTodos = useContext(DispatchTodosContext);
 
   const handleSubmit = (e) => {
@@ -41,8 +39,25 @@ const NewTodo = ({ close }) => {
     setLevelInputValue(e.target.value);
   };
 
+  const memoizedColor = useMemo(() => {
+    switch (parseInt(levelInputValue)) {
+      case 1:
+        return 'bg-red-500';
+      case 2:
+        return 'bg-orange-500';
+      case 3:
+        return 'bg-yellow-500';
+      case 4:
+        return 'bg-blue-200';
+      case 5:
+        return 'bg-white';
+      default:
+        return 'bg-purple-400';
+    }
+  }, [levelInputValue]);
+
   return (
-    <div className="p-5">
+    <div className={`p-5 absolute inset-0 ${memoizedColor}`}>
       <form onSubmit={handleSubmit}>
         <input
           className="block w-full text-black p-2"

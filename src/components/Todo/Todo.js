@@ -36,7 +36,7 @@ const Todo = ({ todo }) => {
     <>
       {isViewOpen ? (
         <Modal open={openView} close={closeView}>
-          <ViewTodo todo={todo} />
+          <ViewTodo todo={todo} close={closeView} />
         </Modal>
       ) : null}
       <li
