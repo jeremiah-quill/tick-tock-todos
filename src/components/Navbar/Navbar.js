@@ -2,6 +2,7 @@
 import { BsFillPlusCircleFill } from 'react-icons/bs';
 import { AiOutlinePlus } from 'react-icons/ai';
 import { GiHamburgerMenu } from 'react-icons/gi';
+import { FiMenu } from 'react-icons/fi';
 import { useModal } from '../../hooks/useModal';
 import NewTodo from '../NewTodo';
 import Modal from '../Modal';
@@ -26,11 +27,11 @@ const Navbar = () => {
       ) : null}
       <div className="h-16 px-5 flex items-center justify-between fixed top-0 inset-x-0 bg-black text-gray-100">
         <button className="hover:bg-gray-800 rounded" onClick={handleOpenModal}>
-          <AiOutlinePlus size="2em" />
+          <AiOutlinePlus size="1.6em" />
         </button>
         <div>
-          <button>
-            <GiHamburgerMenu size="2em" />
+          <button className="hover:bg-gray-800 rounded p-1">
+            <FiMenu size="1.6em" />
           </button>
         </div>
       </div>
