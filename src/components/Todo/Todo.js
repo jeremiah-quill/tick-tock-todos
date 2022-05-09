@@ -51,7 +51,7 @@ const Todo = ({ todo }) => {
       <AnimatePresence>
         {isViewOpen ? (
           <Modal open={openView} close={closeView}>
-            <ViewTodo todo={todo} close={closeView} isOpen={isViewOpen} />
+            <ViewTodo color={memoizedColor} todo={todo} close={closeView} isOpen={isViewOpen} />
           </Modal>
         ) : null}
       </AnimatePresence>

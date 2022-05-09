@@ -1,7 +1,4 @@
-// GiHamburgerMenu
-import { BsFillPlusCircleFill } from 'react-icons/bs';
 import { AiOutlinePlus } from 'react-icons/ai';
-import { GiHamburgerMenu } from 'react-icons/gi';
 import { FiMenu } from 'react-icons/fi';
 import { useModal } from '../../hooks/useModal';
 import NewTodo from '../NewTodo';
@@ -16,8 +13,6 @@ const Navbar = () => {
   function handleOpenModal() {
     openNewTodo();
   }
-
-  console.log('rendered navbar');
 
   return (
     <>

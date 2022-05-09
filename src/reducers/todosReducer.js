@@ -7,6 +7,8 @@ export default function todosReducer(state, action) {
     case 'REMOVE_TODO':
       return state.filter((todo) => todo.id !== action.id);
     case 'UPDATE_IMPORTANCE':
+      console.log(action.id, typeof action.id);
+      console.log(action.importance, typeof action.importance);
       return state.map((todo) =>
         todo.id !== action.id ? todo : { ...todo, importance: action.importance }
       );

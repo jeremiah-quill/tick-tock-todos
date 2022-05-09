@@ -1,14 +1,14 @@
 import React, { useMemo } from 'react';
 
-const Button = ({ text, style, onClick, type }) => {
+const Button = ({ text, buttonStyle, onClick, type }) => {
   const memoizedStyle = useMemo(() => {
-    switch (style) {
+    switch (buttonStyle) {
       case 'black':
-        return 'mr-3 py-1 px-3 rounded text-white bg-black hover:bg-gray-800';
+        return 'py-1 px-3 rounded text-white bg-black hover:bg-gray-800';
       default:
-        return style;
+        return buttonStyle;
     }
-  }, [style]);
+  }, [buttonStyle]);
 
   return (
     <button type={type} onClick={onClick} className={memoizedStyle}>

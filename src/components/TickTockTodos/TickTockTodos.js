@@ -9,7 +9,6 @@ const TickTockTodos = () => {
   useEffect(() => {
     const date = new Date();
     const formattedDate = format(date, 'EEEE, MMMM do');
-    console.log(typeof formattedDate);
     setDate(formattedDate);
   }, []);
   if (date === null) {

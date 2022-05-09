@@ -1,7 +1,7 @@
 import React, { useContext, useMemo, useState } from 'react';
 import { DispatchTodosContext } from '../../contexts/TodoContext';
-import { FaFlag } from 'react-icons/fa';
 import Button from '../Button';
+import ImportancePicker from '../ImportancePicker';
 
 const NewTodo = ({ close }) => {
   const [levelInputValue, setLevelInputValue] = useState(5);
@@ -36,8 +36,8 @@ const NewTodo = ({ close }) => {
     setDetailsInputValue(e.target.value);
   };
 
-  const handleLevelChange = (e) => {
-    setLevelInputValue(e.target.value);
+  const handleLevelChange = (value) => {
+    setLevelInputValue(value);
   };
 
   const memoizedColor = useMemo(() => {
@@ -77,7 +77,7 @@ const NewTodo = ({ close }) => {
             {/* <button type="button" onClick={() => console.log('opened importance picker')}>
               <FaFlag />
             </button> */}
-            <select
+            {/* <select
               className="rounded"
               name="levels"
               id="levels"
@@ -88,25 +88,16 @@ const NewTodo = ({ close }) => {
               <option value={3}>Importance: 3</option>
               <option value={2}>Importance: 2</option>
               <option value={1}>Importance: 1</option>
-            </select>
+            </select> */}
           </nav>
         </div>
         <div className="mt-3 pt-4">
-          <div className="flex mx-3">
-            <Button type="submit" text="save" style="black" />
-            <Button type="button" text="cancel" style="black" onClick={close} />
-
-            {/* <button
-              className="mr-3 py-1 px-3 rounded text-white bg-black hover:bg-gray-800"
-              type="submit">
-              save
-            </button>
-            <button
-              type="button"
-              className="py-1 px-3 rounded text-white bg-black hover:bg-gray-800"
-              onClick={close}>
-              cancel
-            </button> */}
+          <div className="flex gap-2">
+            <Button type="submit" text="save" buttonStyle="black" />
+            <Button type="button" text="cancel" buttonStyle="black" onClick={close} />
+            <div>
+              <ImportancePicker handleChange={handleLevelChange} currentLevel={5} />
+            </div>
           </div>
         </div>
       </form>

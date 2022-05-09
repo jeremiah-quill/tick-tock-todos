@@ -1,6 +1,7 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { DispatchTodosContext } from '../../contexts/TodoContext';
 import Button from '../Button';
+import ImportancePicker from '../ImportancePicker';
 
 const EditorView = ({ closeEditor, todo, handleLevelChange, levelInputValue }) => {
   const [titleInputValue, setTitleInputValue] = useState(todo.title);
@@ -53,29 +54,13 @@ const EditorView = ({ closeEditor, todo, handleLevelChange, levelInputValue }) =
             required={false}
             value={detailsInputValue}
           />
-          <div className="flex w-full">
-            <nav className="ml-auto mt-5 mr-5">
-              <select
-                className="rounded"
-                name="levels2"
-                id="levels2"
-                value={levelInputValue}
-                onChange={handleLevelChange}>
-                <option value={5}>Importance: 5</option>
-                <option value={4}>Importance: 4</option>
-                <option value={3}>Importance: 3</option>
-                <option value={2}>Importance: 2</option>
-                <option value={1}>Importance: 1</option>
-              </select>
-            </nav>
-          </div>
-          {/* <div className="flex">
-            <div className="ml-auto">flag</div>
-          </div> */}
         </div>
-        <div className="flex mt-3">
-          <Button type="submit" text="save" style="black" />
-          <Button type="button" text="cancel" style="black" onClick={closeEditor} />
+        <div className="flex w-full mt-5 gap-2">
+          <Button type="submit" text="save" buttonStyle="black" />
+          <Button type="button" text="cancel" buttonStyle="black" onClick={closeEditor} />
+          <div>
+            <ImportancePicker handleChange={handleLevelChange} currentLevel={todo.importance} />
+          </div>
         </div>
       </form>
     </div>
