@@ -1,8 +1,7 @@
 import React, { useContext, useEffect, useState, useMemo } from 'react';
-import { ModalContext } from '../../contexts/ModalContext';
-import { DispatchTodosContext, TodosContext } from '../../contexts/TodoContext';
+import { DispatchTodosContext } from '../../contexts/TodoContext';
 // AiOutlineCloseCircle
-import { AiOutlineCloseCircle } from 'react-icons/ai';
+import { GrClose } from 'react-icons/gr';
 import EditorView from '../EditorView';
 
 // TODO: separate into view vs. editor
@@ -52,7 +51,7 @@ const ViewTodo = ({ todo, close }) => {
   return (
     <div className={`p-5 absolute inset-0 ${memoizedColor}`}>
       <button onClick={close} className="absolute top-5 right-5">
-        <AiOutlineCloseCircle size="2rem" />
+        <GrClose />
       </button>
       <div className={`text-left p-3 mt-10`}>
         {isEditorOpen ? (

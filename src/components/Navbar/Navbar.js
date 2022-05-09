@@ -1,5 +1,3 @@
-import React, { useContext } from 'react';
-import { ModalContext } from '../../contexts/ModalContext';
 // GiHamburgerMenu
 import { BsFillPlusCircleFill } from 'react-icons/bs';
 import { GiHamburgerMenu } from 'react-icons/gi';
@@ -15,6 +13,8 @@ const Navbar = () => {
   function handleOpenModal() {
     openNewTodo();
   }
+
+  console.log('rendered navbar');
 
   return (
     <>

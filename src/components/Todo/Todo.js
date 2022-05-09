@@ -1,4 +1,4 @@
-import { memo } from 'react';
+import { memo, useMemo } from 'react';
 import ViewTodo from '../ViewTodo';
 import Modal from '../Modal';
 import { useModal } from '../../hooks/useModal';
@@ -14,9 +14,8 @@ const Todo = ({ todo }) => {
     }
   }
 
-  // TODO: move to a helper functions file
-  function mapImportanceToColor(importance) {
-    switch (importance) {
+  const memoizedColor = useMemo(() => {
+    switch (parseInt(todo.importance)) {
       case 1:
         return 'bg-red-500';
       case 2:
@@ -30,7 +29,7 @@ const Todo = ({ todo }) => {
       default:
         return 'bg-purple-400';
     }
-  }
+  }, [todo.importance]);
 
   return (
     <>
@@ -41,11 +40,8 @@ const Todo = ({ todo }) => {
       ) : null}
       <li
         onClick={handleOpenTodo}
-        className="p-5 hover:bg-gray-200 flex items-center h-24 cursor-pointer border-b-2 last-of-type:border-none border-black mx-5">
-        <input
-          type="checkbox"
-          className={`mr-3 rounded-full p-3 ${mapImportanceToColor(todo.importance)}`}
-        />
+        className="p-5 hover:bg-gray-200 flex items-center h-24 cursor-pointer border-b-2 last-of-type:border-none border-black">
+        <input type="checkbox" className={`mr-3 rounded-full p-3 ${memoizedColor}`} />
         <div className="text-left overflow-hidden">
           <h1> {todo.title}</h1>
           <p className="text-xs">{todo.details}</p>
