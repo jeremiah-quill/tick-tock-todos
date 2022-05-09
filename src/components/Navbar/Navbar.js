@@ -1,5 +1,6 @@
 // GiHamburgerMenu
 import { BsFillPlusCircleFill } from 'react-icons/bs';
+import { AiOutlinePlus } from 'react-icons/ai';
 import { GiHamburgerMenu } from 'react-icons/gi';
 import { useModal } from '../../hooks/useModal';
 import NewTodo from '../NewTodo';
@@ -25,7 +26,7 @@ const Navbar = () => {
       ) : null}
       <div className="h-16 px-5 flex items-center justify-between fixed top-0 inset-x-0 bg-black text-gray-100">
         <button onClick={handleOpenModal}>
-          <BsFillPlusCircleFill size="2em" />
+          <AiOutlinePlus size="2em" />
         </button>
         <div>
           <button>
