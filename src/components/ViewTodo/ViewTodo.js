@@ -34,7 +34,7 @@ const ViewTodo = ({ todo, close, color }) => {
       importance: parseInt(levelInputValue),
       id: todo.id,
     });
-  }, [levelInputValue]);
+  }, [levelInputValue, dispatchTodos, todo.id]);
 
   return (
     <div className={`p-5 rounded ${color}`}>

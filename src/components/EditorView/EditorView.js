@@ -39,7 +39,7 @@ const EditorView = ({ closeEditor, todo }) => {
       importance: parseInt(levelInputValue),
       id: todo.id,
     });
-  }, [levelInputValue]);
+  }, [levelInputValue, dispatchTodos, todo.id]);
 
   return (
     <div>

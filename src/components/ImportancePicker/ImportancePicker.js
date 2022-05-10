@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useEffect, useContext, useRef } from 'react';
+import React, { useState, useMemo, useRef } from 'react';
 import { FaFlag } from 'react-icons/fa';
 import { useClickOutside } from '../../hooks/useClickOutside';
 
@@ -6,22 +6,21 @@ import { useClickOutside } from '../../hooks/useClickOutside';
 const ImportancePicker = ({ currentLevel, id, handleChange }) => {
   const [levelInputValue, setLevelInputValue] = useState(currentLevel);
   const [isPickerOpen, setIsPickerOpen] = useState(false);
-  const [levels, setLevels] = useState([
+
+  const levels = [
     { value: 1, color: 'text-red-500' },
     { value: 2, color: 'text-orange-500' },
     { value: 3, color: 'text-yellow-500' },
     { value: 4, color: 'text-blue-500' },
     { value: 5, color: 'text-white' },
-  ]);
+  ];
 
   // * used to keep track of clicks outside of custom select input
+  // * when there is a click outside of the reference element, run the callback
   const ref = useRef();
-  const [didClickOutside] = useClickOutside(ref);
-
-  // * when didClickOutside changes, close the custom select input
-  useEffect(() => {
+  useClickOutside(ref, () => {
     setIsPickerOpen(false);
-  }, [didClickOutside]);
+  });
 
   // * on level change we change the levelInputValue to re-calculate memoizedColor
   // * we then run parent's handleChange
@@ -49,9 +48,8 @@ const ImportancePicker = ({ currentLevel, id, handleChange }) => {
   }, [levelInputValue]);
 
   return (
-    <div className="absolute">
+    <div ref={ref} className="absolute">
       <div
-        ref={ref}
         onClick={() => setIsPickerOpen((currState) => !currState)}
         className="bg-black p-2 rounded hover:cursor-pointer">
         {isPickerOpen ? (
