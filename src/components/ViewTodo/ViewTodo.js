@@ -6,7 +6,6 @@ import EditorView from '../EditorView';
 import Button from '../Button';
 import ImportancePicker from '../ImportancePicker';
 
-// TODO: separate into view vs. editor
 const ViewTodo = ({ todo, close, color }) => {
   const [levelInputValue, setLevelInputValue] = useState(todo.importance);
   const [isEditorOpen, setIsEditorOpen] = useState(false);

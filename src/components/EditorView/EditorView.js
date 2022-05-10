@@ -3,9 +3,14 @@ import { DispatchTodosContext } from '../../contexts/TodoContext';
 import Button from '../Button';
 import ImportancePicker from '../ImportancePicker';
 
-const EditorView = ({ closeEditor, todo, handleLevelChange, levelInputValue }) => {
+const EditorView = ({ closeEditor, todo }) => {
   const [titleInputValue, setTitleInputValue] = useState(todo.title);
   const [detailsInputValue, setDetailsInputValue] = useState(todo.details);
+  const [levelInputValue, setLevelInputValue] = useState(todo.importance);
+
+  const handleLevelChange = (value) => {
+    setLevelInputValue(value);
+  };
 
   const dispatchTodos = useContext(DispatchTodosContext);
 
@@ -34,7 +39,7 @@ const EditorView = ({ closeEditor, todo, handleLevelChange, levelInputValue }) =
       importance: parseInt(levelInputValue),
       id: todo.id,
     });
-  }, [levelInputValue, todo.importance]);
+  }, [levelInputValue]);
 
   return (
     <div>

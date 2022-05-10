@@ -1,43 +1,36 @@
 import React, { useState, useMemo, useEffect, useContext, useRef } from 'react';
 import { FaFlag } from 'react-icons/fa';
-import { DispatchTodosContext } from '../../contexts/TodoContext';
 import { useClickOutside } from '../../hooks/useClickOutside';
 
+// TODO: replace levels state with a prop
 const ImportancePicker = ({ currentLevel, id, handleChange }) => {
   const [levelInputValue, setLevelInputValue] = useState(currentLevel);
   const [isPickerOpen, setIsPickerOpen] = useState(false);
-  const [levels, setLevels] = useState([1, 2, 3, 4, 5]);
+  const [levels, setLevels] = useState([
+    { value: 1, color: 'text-red-500' },
+    { value: 2, color: 'text-orange-500' },
+    { value: 3, color: 'text-yellow-500' },
+    { value: 4, color: 'text-blue-500' },
+    { value: 5, color: 'text-white' },
+  ]);
 
-  const dispatchTodos = useContext(DispatchTodosContext);
-
+  // * used to keep track of clicks outside of custom select input
   const ref = useRef();
+  const [didClickOutside] = useClickOutside(ref);
 
-  useClickOutside(ref, () => {
+  // * when didClickOutside changes, close the custom select input
+  useEffect(() => {
     setIsPickerOpen(false);
-  });
+  }, [didClickOutside]);
 
-  const mapLevelToColor = (value) => {
-    switch (parseInt(value)) {
-      case 1:
-        return 'text-red-500';
-      case 2:
-        return 'text-orange-500';
-      case 3:
-        return 'text-yellow-500';
-      case 4:
-        return 'text-blue-200';
-      case 5:
-        return 'text-white';
-      default:
-        return 'text-purple-400';
-    }
-  };
-
+  // * on level change we change the levelInputValue to re-calculate memoizedColor
+  // * we then run parent's handleChange
   const handleLevelChange = (value) => {
     setLevelInputValue(parseInt(value));
     handleChange(value);
   };
 
+  // * used to calculate chosen color based on level
   const memoizedColor = useMemo(() => {
     switch (parseInt(levelInputValue)) {
       case 1:
@@ -55,14 +48,6 @@ const ImportancePicker = ({ currentLevel, id, handleChange }) => {
     }
   }, [levelInputValue]);
 
-  useEffect(() => {
-    dispatchTodos({
-      type: 'UPDATE_IMPORTANCE',
-      importance: levelInputValue,
-      id: id,
-    });
-  }, [levelInputValue]);
-
   return (
     <div className="absolute">
       <div
@@ -72,9 +57,9 @@ const ImportancePicker = ({ currentLevel, id, handleChange }) => {
         {isPickerOpen ? (
           levels.map((level) => (
             <FaFlag
-              key={level}
-              onClick={(e) => handleLevelChange(level)}
-              className={`hover:cursor-pointer ${mapLevelToColor(level)}`}
+              key={level.value}
+              onClick={() => handleLevelChange(level.value)}
+              className={`hover:cursor-pointer ${level.color}`}
             />
           ))
         ) : (

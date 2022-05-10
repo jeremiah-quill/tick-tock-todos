@@ -10,6 +10,7 @@ const NewTodo = ({ close }) => {
 
   const dispatchTodos = useContext(DispatchTodosContext);
 
+  // TODO: change importance to be an object: {value: parseInt(levelInputValue), color: memoizedColor}
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatchTodos({
@@ -73,23 +74,7 @@ const NewTodo = ({ close }) => {
           required={false}
         />
         <div className="flex w-full">
-          <nav className="ml-auto mt-5 mr-5">
-            {/* <button type="button" onClick={() => console.log('opened importance picker')}>
-              <FaFlag />
-            </button> */}
-            {/* <select
-              className="rounded"
-              name="levels"
-              id="levels"
-              value={levelInputValue}
-              onChange={handleLevelChange}>
-              <option value={5}>Importance: 5</option>
-              <option value={4}>Importance: 4</option>
-              <option value={3}>Importance: 3</option>
-              <option value={2}>Importance: 2</option>
-              <option value={1}>Importance: 1</option>
-            </select> */}
-          </nav>
+          <nav className="ml-auto mt-5 mr-5"></nav>
         </div>
         <div className="mt-3 pt-4">
           <div className="flex gap-2">
