@@ -35,10 +35,7 @@ const ImportancePicker = ({ currentLevel, id, handleChange }) => {
 
   const handleLevelChange = (value) => {
     setLevelInputValue(parseInt(value));
-
-    if (handleChange) {
-      handleChange(value);
-    }
+    handleChange(value);
   };
 
   const memoizedColor = useMemo(() => {

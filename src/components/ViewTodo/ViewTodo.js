@@ -60,7 +60,7 @@ const ViewTodo = ({ todo, close, color }) => {
             </div>
             <div className="flex w-full">
               <nav className="mt-5 flex align-middle w-full">
-                <ImportancePicker id={todo.id} currentLevel={todo.importance} />
+                <ImportancePicker handleChange={handleLevelChange} currentLevel={todo.importance} />
                 <Button
                   type="button"
                   onClick={handleDelete}
